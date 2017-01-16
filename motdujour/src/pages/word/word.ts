@@ -29,7 +29,7 @@ export class WordPage {
           content: translateService.instant('pleaseWait')
         });
         loader.present();
-        http.get('/api/words/me').map(res => res.json()).subscribe(entry => {
+        http.get('https://motdujour.monolitosoft.com/api/words/me').map(res => res.json()).subscribe(entry => {
           loader.dismiss();
           this.entry = entry;
         });

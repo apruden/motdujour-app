@@ -30,7 +30,7 @@ export class QuizPage {
             content: translateService.instant('pleaseWait')
           });
           loader.present();
-          http.get('/api/questions?from=' + fro).map(res => res.json()).subscribe(questions => {
+          http.get('https://motdujour.monolitosoft.com/api/questions?from=' + fro).map(res => res.json()).subscribe(questions => {
             loader.dismiss();
             questions.forEach(q => {
               q.text = q.text.replace(new RegExp(q.answer, 'ig'), '<strong style="color: red;">__à completer__</strong>');
@@ -90,7 +90,7 @@ export class QuizPage {
         this.storage.set('user', currentUser);
       }
 
-      this.http.post('/api/stats/' + currentUser.uid, data, options)
+      this.http.post('https://motdujour.monolitosoft.com/api/stats/' + currentUser.uid, data, options)
       .subscribe(r => {
         //this.sent = true;
         //this.storage.set('lastAnswer', {
