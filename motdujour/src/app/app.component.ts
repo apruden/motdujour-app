@@ -19,26 +19,27 @@ export class MyApp {
       Splashscreen.hide();
       translate.setDefaultLang('fr');
 
-      let push = Push.init({
-         ios: {
-           alert: "true",
-           badge: false,
-           sound: "true"
-         }
-      });
+      if (platform.is('cordova')) {
+        let push = Push.init({
+           ios: {
+             alert: "true",
+             badge: false,
+             sound: "true"
+           }
+        });
 
-      push.on('registration', (data)=> {
-        console.log('onRegistration', data);
-      });
+        push.on('registration', (data)=> {
+          console.log('onRegistration', data);
+        });
 
-      push.on('notification', (data) => {
-        console.log('onNotifaction', data);
-      });
+        push.on('notification', (data) => {
+          console.log('onNotifaction', data);
+        });
 
-      push.on('error', (e) => {
-        console.log('error', e);
-      });
-
+        push.on('error', (e) => {
+          console.log('error', e);
+        });
+      }
     });
   }
 }
