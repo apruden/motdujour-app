@@ -24,11 +24,15 @@ export class MyApp {
 
       if (platform.is('cordova')) {
         let push = Push.init({
-           ios: {
-             alert: "true",
-             badge: false,
-             sound: "true"
-           }
+          android: {
+            senderID:'1069024173850'
+          },
+          ios: {
+            alert: "true",
+            badge: false,
+            sound: "true"
+          },
+          windows: {}
         });
 
         push.on('registration', (data)=> {

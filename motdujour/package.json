@@ -34,6 +34,10 @@
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
+      {
+          "variables": { "SENDER_ID": "1069024173850"},
+          "locator": "phonegap-plugin-push"
+      },
     "cordova-plugin-whitelist",
     "cordova-plugin-console",
     "cordova-plugin-statusbar",
