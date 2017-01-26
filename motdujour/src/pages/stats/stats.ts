@@ -22,10 +22,10 @@ export class StatsPage {
               let day = [];
               let week = [];
               let month = [];
-              data.forEach(e => {
-                month.push(e.month);
-                week.push(e.week);
-                day.push(e.day);
+              data.forEach((e, i) => {
+                month.push({x: i, y: e.month});
+                week.push({x: i, y: e.week});
+                day.push({x: i, y: e.day});
               });
               this.lineChartData = [
                 {data: day, label: labels.day},
@@ -45,7 +45,19 @@ export class StatsPage {
     scales: {
       yAxes: [{
         ticks: {
-          beginAtZero:true
+          beginAtZero: true,
+          min: 0,
+          max: 1.0,
+          stepSize: 0.1
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          stepSize: 1,
+          beginAtZero: true,
+          min: 0,
+          max: 60,
+          suggestedMax: 60
         }
       }]
     }

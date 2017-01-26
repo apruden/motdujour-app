@@ -7,7 +7,8 @@
   <p *ngIf="questions.length === 0">{{ 'welcome' | translate }}</p>
   <ion-card *ngFor="let q of questions">
     <ion-card-content>
-      <div [innerHTML]="q.text"></div>
+      <div *ngIf="!sent" [innerHTML]="q.text"></div>
+      <div *ngIf="sent" [innerHTML]="q.answered"></div>
       <ion-list>
         <ion-item>
           <ion-label stacked>{{'answer' | translate}} </ion-label>

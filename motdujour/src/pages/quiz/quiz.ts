@@ -33,6 +33,7 @@ export class QuizPage {
           http.get('https://motdujour.monolitosoft.com/api/questions?from=' + fro).map(res => res.json()).subscribe(questions => {
             loader.dismiss();
             questions.forEach(q => {
+              q.answered = q.text;
               q.text = q.text.replace(new RegExp(q.answer, 'ig'), '<strong style="color: red;">__à completer__</strong>');
             });
             this.questions = questions;
@@ -40,6 +41,7 @@ export class QuizPage {
         } else {
           this.questions = lastAnswer.questions;
           this.sent = true;
+
         }
       });
     });
