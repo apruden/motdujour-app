@@ -35,6 +35,10 @@ export class StatsPage {
             }
           });
         });
+
+        for(var i = 0; i <= 60; i++){
+          this.lineChartLabels.push(i);
+        }
   }
 
   public lineChartData:Array<any> = [];
@@ -52,12 +56,16 @@ export class StatsPage {
         }
       }],
       xAxes: [{
+        gridLines: {
+          drawTicks: true
+        },
         ticks: {
           stepSize: 1,
           beginAtZero: true,
           min: 0,
           max: 60,
-          suggestedMax: 60
+          suggestedMax: 60,
+          display: true
         }
       }]
     }

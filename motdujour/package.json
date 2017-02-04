@@ -1,7 +1,7 @@
 {
   "name": "motdujour",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "monolitosoft.com",
+  "homepage": "http://motdujour.monolitosoft.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -21,7 +21,7 @@
     "@angular/platform-server": "2.2.1",
     "@ionic/storage": "^1.1.7",
     "chart.js": "^2.4.0",
-    "ionic-angular": "2.0.0-rc.4",
+    "ionic-angular": "^2.0.0",
     "ionic-native": "2.2.11",
     "ionicons": "3.0.0",
     "ng2-charts": "^1.4.4",
@@ -34,10 +34,12 @@
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
-      {
-          "variables": { "SENDER_ID": "1069024173850"},
-          "locator": "phonegap-plugin-push"
+    {
+      "variables": {
+        "SENDER_ID": "1069024173850"
       },
+      "locator": "phonegap-plugin-push"
+    },
     "cordova-plugin-whitelist",
     "cordova-plugin-console",
     "cordova-plugin-statusbar",

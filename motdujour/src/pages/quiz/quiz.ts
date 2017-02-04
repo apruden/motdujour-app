@@ -53,9 +53,27 @@ export class QuizPage {
     return parseInt('' + date.getUTCFullYear() + '' + (m < 10 ? '0' + m : m)  + '' + (d < 10 ? '0' + d : d), 10);
   }
 
+  transform(answer: String): String {
+    var m = { 'é': 'e', 'è': 'e', 'ê': 'e', 'á': 'a', 'à': 'a', 'â': 'a',
+      'ù': 'u', 'ô': 'o', 'û': 'u', 'î': 'i', 'ç': 'c'
+    };
+
+    var tmp = answer.toLowerCase().replace(/_/g, ' ');
+
+    for(var k in m) {
+      tmp = tmp.replace(new RegExp(k, 'g'), m[k]);
+    }
+
+    return tmp;
+  }
+
+  checkAnswer(userAnswer: String, answer: String): Boolean {
+    return this.transform(userAnswer) === this.transform(answer);
+  }
+
   sendResponse() {
     let now = this.toDate(new Date());
-    this.questions.forEach(q => q.result = q.userAnswer === q.answer ? 1 : 0);
+    this.questions.forEach(q => q.result = this.checkAnswer(q.userAnswer, q.answer) ? 1 : 0);
     let data = {
       'date': now,
       'day': this.questions[0] === undefined ? 1 : this.questions[0].result,
